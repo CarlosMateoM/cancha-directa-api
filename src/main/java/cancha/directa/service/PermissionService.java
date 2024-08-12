@@ -11,7 +11,7 @@ public class PermissionService {
 
     private PermissionRepository permissionRepository;
 
-    private void save(Permission permission){
+    public void save(Permission permission){
         permissionRepository.save(permission);
     }
 }

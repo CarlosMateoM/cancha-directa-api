@@ -5,7 +5,6 @@ import cancha.directa.enums.RoleType;
 import cancha.directa.model.Permission;
 import cancha.directa.model.Role;
 import cancha.directa.model.User;
-import cancha.directa.repository.PermissionRepository;
 import cancha.directa.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @SpringBootApplication
