@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -32,4 +34,7 @@ public class SportsCenter {
             nullable = false
     )
     private String phone;
+
+    @OneToMany(mappedBy = "sportsCenter", fetch = FetchType.EAGER)
+    private List<Field> fields;
 }
