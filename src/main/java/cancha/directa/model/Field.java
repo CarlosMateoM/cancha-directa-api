@@ -1,6 +1,6 @@
 package cancha.directa.model;
 
-import cancha.directa.enums.StatusCourt;
+import cancha.directa.enums.StatusField;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,17 +37,21 @@ public class Field {
             nullable = false
     )
     @Enumerated(EnumType.STRING)
-    private StatusCourt status;
+    private StatusField status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sport_type_id")
     private SportType sportType;
 
-    @OneToMany(targetEntity = Reservation.class, mappedBy = "field")
-    private List<Reservation> reservations;
-
-    @ManyToOne(targetEntity = SportsCenter.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = SportsCenter.class, fetch 4= FetchType.LAZY)
     @JoinColumn(name = "sport_center_id", referencedColumnName = "id")
     private SportsCenter sportsCenter;
+
+    @ManyToOne(targetEntity = Schedule.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "schedule_id", referencedColumnName = "id")
+    private Schedule schedule;
+
+    @OneToMany(targetEntity = Reservation.class, mappedBy = "field")
+    private List<Reservation> reservations;
 
 }

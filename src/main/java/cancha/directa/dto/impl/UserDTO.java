@@ -1,17 +1,16 @@
-package cancha.directa.dto;
+package cancha.directa.dto.impl;
 
-import cancha.directa.model.Reservation;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class UserDTO {
 
     private Long id;
@@ -21,5 +20,4 @@ public class UserDTO {
     private String phone;
     private String email;
     private String password;
-    private List<Reservation> reservations;
 }

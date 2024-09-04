@@ -52,5 +52,7 @@ public class Schedule {
     @OneToMany(mappedBy = "schedules", targetEntity = ReservationsSchedules.class)
     private List<ReservationsSchedules> reservationsSchedules;
 
+    @OneToMany(mappedBy = "schedule", targetEntity = Field.class)
+    private List<Field> field;
 
 }

@@ -29,6 +29,4 @@ public class Reservation {
     @OneToMany(mappedBy = "reservations", targetEntity = ReservationsSchedules.class)
     private List<ReservationsSchedules> reservationsSchedules;
 
-
-
 }

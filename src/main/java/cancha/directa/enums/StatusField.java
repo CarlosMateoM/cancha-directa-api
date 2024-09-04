@@ -1,6 +1,6 @@
 package cancha.directa.enums;
 
-public enum StatusCourt {
+public enum StatusField {
 
     RESERVADO,
     DISPONIBLE
