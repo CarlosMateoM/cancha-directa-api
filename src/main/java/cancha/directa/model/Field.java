@@ -43,7 +43,7 @@ public class Field {
     @JoinColumn(name = "sport_type_id")
     private SportType sportType;
 
-    @ManyToOne(targetEntity = SportsCenter.class, fetch 4= FetchType.LAZY)
+    @ManyToOne(targetEntity = SportsCenter.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "sport_center_id", referencedColumnName = "id")
     private SportsCenter sportsCenter;
 

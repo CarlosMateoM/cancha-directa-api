@@ -8,7 +8,9 @@ E = Objeto Entidad
  */
 public interface IDTO<D, E> {
 
-   E DTOToEntity(D dto);
-   D EntityToDTO(E entity);
-   List<D> EntityListToDTOList(List<E> entityList);
+   E toEntity(D dto);
+   D toDTO(E entity);
+   D toDTOAllAtributes(E entity);
+   List<D> toDTOList(List<E> entityList);
+   List<E> toEntityList(List<D> DTOList);
 }

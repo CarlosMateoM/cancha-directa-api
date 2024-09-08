@@ -13,5 +13,7 @@ public interface IUserService {
 
     void save (User user);
 
+    void updateById();
+
     void deleteById(Long id);
 }

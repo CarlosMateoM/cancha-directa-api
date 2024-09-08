@@ -23,11 +23,11 @@ public class FieldController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FieldDTO> findById(@PathVariable Long id){
+    public ResponseEntity<cancha.directa.dto.impl.FieldDTO> findById(@PathVariable Long id){
         Optional<Field> fieldOptional = this.fieldService.findById(id);
 
         if(fieldOptional.isPresent()){
-            FieldDTO fieldDTO = new FieldDTO().EntityToDTO(fieldOptional.get());
+            cancha.directa.dto.impl.FieldDTO fieldDTO = new cancha.directa.dto.impl.FieldDTO().toDTO(fieldOptional.get());
             return ResponseEntity.ok().body(fieldDTO);
         }
 
@@ -35,45 +35,32 @@ public class FieldController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<FieldDTO>> findAll(){
+    public ResponseEntity<List<cancha.directa.dto.impl.FieldDTO>> findAll(){
         List<Field> fieldList = this.fieldService.findAll();
 
         if(fieldList.isEmpty()){
            return ResponseEntity.notFound().build();
         }
 
-        List<FieldDTO> fields = new FieldDTO().EntityListToDTOList(fieldList);
+        List<FieldDTO> fields = new FieldDTO().toDTOList(fieldList);
         return ResponseEntity.ok().body(fields);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<FieldDTO> save(@RequestBody FieldDTO fieldDTO) throws URISyntaxException {
-        FieldDTO dto = new FieldDTO();
+    public ResponseEntity<cancha.directa.dto.impl.FieldDTO> save(@RequestBody cancha.directa.dto.impl.FieldDTO fieldDTO) throws URISyntaxException {
+        cancha.directa.dto.impl.FieldDTO dto = new cancha.directa.dto.impl.FieldDTO();
 
         if(fieldDTO.getName().isBlank()){
             ResponseEntity.badRequest().build();
         }
-        Field newField = dto.DTOToEntity(fieldDTO);
+        Field newField = dto.toEntity(fieldDTO);
         this.fieldService.save(newField);
         return ResponseEntity.created(new URI("api/v1/field/save")).body(fieldDTO);
     }
     @PutMapping("update/{id}")
-    public ResponseEntity<?> updateById(@PathVariable Long id, @RequestBody FieldDTO fieldDTO){
+    public ResponseEntity<?> updateById(@PathVariable Long id, @RequestBody cancha.directa.dto.impl.FieldDTO fieldDTO){
 
-        Optional<Field> optionalField;
-
-        if (id != null){
-             optionalField = this.fieldService.findById(id);
-             if(optionalField.isPresent()){
-                Field field = optionalField.get();
-
-                field.setId(fieldDTO.getId());
-                field.setName(fieldDTO.getName());
-                field.setDescription(fieldDTO.getDescription());
-                field.setStatus(fieldDTO.getStatus());
-                field.set
-            }
-        }
+        return null;
     }
 
     @DeleteMapping("delete/{id}")

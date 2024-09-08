@@ -12,6 +12,8 @@ public interface IFieldService {
 
     void save (Field field);
 
+    void updateById (Long id, cancha.directa.dto.impl.FieldDTO fieldDTO);
+
     void deleteById (Long id);
 
 }

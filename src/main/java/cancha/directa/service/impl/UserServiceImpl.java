@@ -2,7 +2,6 @@ package cancha.directa.service.impl;
 
 import cancha.directa.model.User;
 import cancha.directa.persistence.IUserDAO;
-import cancha.directa.persistence.impl.UserDAOImpl;
 import cancha.directa.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +32,11 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void save(User user) {
         this.userDAO.save(user);
+    }
+
+    @Override
+    public void updateById(){
+
     }
 
     @Override

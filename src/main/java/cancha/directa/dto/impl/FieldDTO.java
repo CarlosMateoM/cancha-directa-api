@@ -27,7 +27,7 @@ public class FieldDTO implements IDTO<FieldDTO, Field> {
     private Long scheduleId;
 
     @Override
-    public Field DTOToEntity(FieldDTO dto) {
+    public Field toEntity(FieldDTO dto) {
 
         Field field = new Field();
 
@@ -39,9 +39,9 @@ public class FieldDTO implements IDTO<FieldDTO, Field> {
     }
 
     @Override
-    public FieldDTO EntityToDTO(Field entity) {
+    public FieldDTO toDTO(Field entity) {
 
-        return FieldDTO.builder()
+        return  FieldDTO.builder()
                 .id(entity.getId())
                 .name(entity.getName())
                 .description(entity.getDescription())
@@ -53,18 +53,19 @@ public class FieldDTO implements IDTO<FieldDTO, Field> {
     }
 
     @Override
-    public List<FieldDTO> EntityListToDTOList(List<Field> entityList) {
+    public FieldDTO toDTOAllAtributes(Field entity) {
+        return null;
+    }
+
+    @Override
+    public List<FieldDTO> toDTOList(List<Field> entityList) {
 
         return entityList.stream()
-                .map(entity -> FieldDTO.builder()
-                        .id(entity.getId())
-                        .name(entity.getName())
-                        .description(entity.getDescription())
-                        .status(entity.getStatus())
-                        .sportTypeId(entity.getSportType() != null ? entity.getSportType().getId() : null)
-                        .sportsCenterId(entity.getSportsCenter() != null ? entity.getSportsCenter().getId() : null)
-                        .scheduleId(entity.getSchedule() != null ? entity.getSchedule().getId() : null)
-                        .build()
-                ).toList();
+                .map(this::toDTO).toList();
+    }
+
+    @Override
+    public List<Field> toEntityList(List<FieldDTO> DTOList) {
+        return DTOList.stream().map(this::toEntity).toList();
     }
 }
