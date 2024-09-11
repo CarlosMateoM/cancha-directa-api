@@ -1,19 +1,18 @@
 package cancha.directa.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Entity (name = "SportCenter")
+@Entity
 @Table(name = "sports_centers")
+@Builder
 public class SportsCenter {
     @Id
     @GeneratedValue(
@@ -34,6 +33,18 @@ public class SportsCenter {
             nullable = false
     )
     private String phone;
+
+    @Column(
+            name = "opening_time",
+            nullable = false
+    )
+    private LocalTime openingTime;
+
+    @Column(
+            name = "closing_time",
+            nullable = false
+    )
+    private LocalTime closingTime;
 
     @OneToMany(mappedBy = "sportsCenter", fetch = FetchType.EAGER)
     private List<Field> fields;

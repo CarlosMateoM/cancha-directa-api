@@ -33,7 +33,6 @@ public class SportTypeServiceImpl implements ISportTypeService {
         SportTypeDTO sportTypeDTO = new SportTypeDTO();
 
         return sportTypeDTO.toDTOAllAtributes(sportType);
-
     }
 
     @Override
